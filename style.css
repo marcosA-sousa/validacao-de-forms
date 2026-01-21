@@ -1,0 +1,130 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 500px;
+
+    h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 30px;
+        font-size: 28px;
+    }
+
+    #cadastroForm {
+        display: flex;
+        flex-direction: column;
+
+        .grupoForm {
+            margin-bottom: 25px;
+            position: relative;
+
+            label {
+                display: block;
+                margin-bottom: 8px;
+                color: #555;
+                font-weight: bold;
+                font-size: 14px;
+            }
+
+            input {
+                width: 100%;
+                padding: 12px;
+                border: 2px solid #ddd;
+                border-radius: 5px;
+                font-size: 16px;
+                transition: border-color 0.3s;
+
+                &:focus {
+                    outline: none;
+                    border-color: #667eea;
+                }
+
+                &:valid {
+                    border-color: #4caf50;
+                }
+                &:invalid:not(:placeholder-shown) {
+                    border-color: #f44336;
+                }
+            }
+
+            .mensagemErro {
+                display: none;
+                color: #f44336;
+                font-size: 13px;
+                margin-top: 5px;
+            }
+
+        
+        }
+        button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+
+            &:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            }
+
+            &:active {
+                transform: translateY(0);
+            }
+        }
+
+    }
+    
+
+    .mensagemSucesso {
+        display: none;
+        background-color: #4caf50;
+        color: white;
+        padding: 15px;
+        border-radius: 5px;
+        margin-top: 20px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .mensagemSucesso.mostrarMensagem {
+    display: block;
+    }
+}
+/* Mostra mensagem de erro quando o campo é inválido e foi tocado */
+input:invalid:not(:placeholder-shown) ~ .mensagemErro {
+    display: block;
+}
+
+/* Mostra mensagem de erro quando o formulário foi submetido */
+.form-submitted input:invalid ~ .mensagemErro {
+    display: block;
+}
+
+.form-submitted input:invalid {
+    border-color: #f44336;
+}
